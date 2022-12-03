@@ -79,11 +79,69 @@ namespace AdventofCode.Day_3
         [TestCategory("Day3")]
         public void Part2()
         {
+            string[] lines = File.ReadAllLines(@"C:\Users\Coral\source\repos\AdventofCode2022\AdventofCode\Day 3\input");
 
+
+            var priority = new Dictionary<string, int>();
+
+            var badge = new List<char>();
+
+            var count = 1;
+
+            for (char c = 'A'; c <= 'Z'; c++)
+            {
+                priority.Add(c.ToString().ToLower(), count);
+                count++;
+            }
+
+            count = 27;
+
+            for (char c = 'A'; c <= 'Z'; c++)
+            {
+                priority.Add(c.ToString().ToUpper(), count);
+                count++;
+            }
+
+            var groupedList = new List<string>();
+
+            for (int i = 0; i < 300; i+=3)
+            {
+                groupedList.Clear();
+                groupedList = lines.ToList().GetRange(i, 3);
+
+                Action work = delegate
+                {
+                    foreach (var ruck1 in groupedList[0])
+                    {
+                        foreach (var ruck2 in groupedList[1])
+                        {
+                            if (ruck1 == ruck2)
+                            {
+                                foreach (var ruck3 in groupedList[2])
+                                {
+                                    if (ruck2 == ruck3)
+                                    {
+                                        badge.Add(ruck3);
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+                };
+                work();
+
+            }
+
+            var sum = 0;
+
+            foreach (var item in badge)
+            {
+                sum += priority.GetValueOrDefault(item.ToString());
+            }
+            
+            Console.WriteLine(sum);
         }
-
-
-
-
     }
 }
