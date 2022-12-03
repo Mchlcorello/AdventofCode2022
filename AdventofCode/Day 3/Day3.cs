@@ -81,7 +81,6 @@ namespace AdventofCode.Day_3
         {
             string[] lines = File.ReadAllLines(@"C:\Users\Coral\source\repos\AdventofCode2022\AdventofCode\Day 3\input");
 
-
             var priority = new Dictionary<string, int>();
 
             var badge = new List<char>();
@@ -141,6 +140,57 @@ namespace AdventofCode.Day_3
                 sum += priority.GetValueOrDefault(item.ToString());
             }
             
+            Console.WriteLine(sum);
+        }
+
+
+
+
+        [TestMethod]
+        [TestCategory("Day3")]
+        public void zHolyshitthisissomucheasier()
+        {
+            string[] lines = File.ReadAllLines(@"C:\Users\Coral\source\repos\AdventofCode2022\AdventofCode\Day 3\input");
+
+            var groups = lines.Chunk(3);
+            
+            var badge = new List<char>();
+            
+            var priority = new Dictionary<string, int>();
+
+            var count = 1;
+
+            for (char c = 'A'; c <= 'Z'; c++)
+            {
+                priority.Add(c.ToString().ToLower(), count);
+                count++;
+            }
+
+            count = 27;
+
+            for (char c = 'A'; c <= 'Z'; c++)
+            {
+                priority.Add(c.ToString().ToUpper(), count);
+                count++;
+            }
+
+            //var r = qq.Aggregate((x, y) => String.Concat(x.Intersect(y)));
+            
+            
+            foreach (var rucks in groups)
+            {
+                var c = rucks[0].Intersect(rucks[1]);
+                var cc = c.Intersect(rucks[2]);
+                badge.Add(cc.First());
+            }
+
+            var sum = 0;
+
+            foreach (var item in badge)
+            {
+                sum += priority.GetValueOrDefault(item.ToString());
+            }
+
             Console.WriteLine(sum);
         }
     }
