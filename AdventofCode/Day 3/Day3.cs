@@ -143,7 +143,57 @@ namespace AdventofCode.Day_3
             Console.WriteLine(sum);
         }
 
+        [TestMethod]
+        [TestCategory("Day3")]
+        public void zzholyshit()
+        {
+            string[] lines = File.ReadAllLines(@"C:\Users\Coral\source\repos\AdventofCode2022\AdventofCode\Day 3\input");
 
+            var groups = lines.Chunk(3);
+
+            var badge = new List<char>();
+
+            var priority = new Dictionary<string, int>();
+
+            var count = 1;
+
+            for (char c = 'A'; c <= 'Z'; c++)
+            {
+                priority.Add(c.ToString().ToLower(), count);
+                count++;
+            }
+
+            count = 27;
+
+            for (char c = 'A'; c <= 'Z'; c++)
+            {
+                priority.Add(c.ToString().ToUpper(), count);
+                count++;
+            }
+
+
+            foreach (var elf in groups)
+            {
+                foreach (var item in elf.First())
+                {
+                    if (elf[1].Contains(item) && elf[2].Contains(item))
+                    {
+                        badge.Add(item);
+                        break;
+                    }
+                }
+            }
+
+
+            var sum = 0;
+
+            foreach (var item in badge)
+            {
+                sum += priority.GetValueOrDefault(item.ToString());
+            }
+
+
+        }
 
 
         [TestMethod]
