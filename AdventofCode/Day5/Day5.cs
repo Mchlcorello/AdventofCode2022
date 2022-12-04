@@ -5,30 +5,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdventofCode.Template
+namespace AdventofCode.Day5
 {
     [TestClass]
-    public class Class1
+    public class Day5
     {
 
         [TestMethod]
-        [TestCategory("Template")]
+        [TestCategory("Day5")]
         public void Part1()
         {
             string[] lines = File.ReadAllLines(@"doooooooooooooooooog");
 
-
-
         }
 
         [TestMethod]
-        [TestCategory("Template")]
+        [TestCategory("Day5")]
         public void Part2()
         {
             string[] lines = File.ReadAllLines(@"doooooooooooooooooog");
-
-
-
 
         }
 

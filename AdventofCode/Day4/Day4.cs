@@ -46,6 +46,7 @@ namespace AdventofCode.Day4
                 }
 
             }
+            Console.WriteLine(total);
         }
 
         [TestMethod]
