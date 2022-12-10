@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace AdventofCode.Template
 {
     [TestClass]
-    public class Class1
+    public class Day6
     {
 
         [TestMethod]
